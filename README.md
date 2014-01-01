@@ -1,8 +1,8 @@
 huckel
 ======
 
-As stated in the wikipedia`[0]`, [The Hückel method or Hückel molecular orbital
-method (HMO)], proposed by Erich Hückel in 1930, is a very simple linear
+As stated in the wikipedia`[0]`, The Hückel method or Hückel molecular orbital
+method (HMO), proposed by Erich Hückel in 1930, is a very simple linear
 combination of atomic orbitals molecular orbitals (LCAO MO) method for the
 determination of energies of molecular orbitals of pi electrons in conjugated
 hydrocarbon systems, such as ethene, benzene and butadiene. It is the
