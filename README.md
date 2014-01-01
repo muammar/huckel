@@ -28,8 +28,7 @@ Clone this repository:
 $ git clone https://github.com/muammar/huckel.git
 ```
 
-You need to rename your MOLPRO output file to `input`, and execute the script
-as follows:
+Then you excute the program as follows:
 
 ```bash
 $ python $PATH/huckel/huckel.py $input
