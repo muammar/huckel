@@ -34,10 +34,11 @@ Then you excute the program as follows:
 $ python $PATH/huckel/huckel.py $input
 ```
 
-Where `$input` is the name of your MOLPRO output file.  The program will ask
-you if your molecule has the same internuclear distances, and to enter such
-value. In the case that your carbon structure has different values, the program
-will ask you for the interval of such distances.
+Where `$input` is the name of your MOLPRO output file. The program will ask you
+if your molecule has the same internuclear distances, and to enter such value.
+In the case that your carbon structure has different values, the program will
+ask you for the interval of such distances. You can take a look at the
+`examples/` directory to more information regarding this.
 
 
 Finally, a `huckel.dat` file will be created at the end of the execution that
