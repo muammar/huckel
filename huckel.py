@@ -80,7 +80,7 @@ print ('The Huckel Hamiltonian Matrix')
 #for x in np.nditer(distances, flags=['external_loop'], order='F'):
 #    print x
 
-distances[np.isclose(distances, 0)]  = 1
+#distances[np.isclose(distances, 0)]  = 1
 distances[distances > 2.68530063] = 0
 distances[np.isclose(distances, 2.68530063)]  = -1
 
