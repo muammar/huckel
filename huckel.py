@@ -10,6 +10,14 @@ __maintainer__ = "Muammar El Khatib"
 __email__ = "muammarelkhatib@gmail.com"
 __status__ = "Development"
 """
+"""
+This is a python program that takes your MOLPRO output file, and from the
+Cartesian coordinates, it forms a Huckel hamiltonian matrix to then give you
+the eigenvalues to be plotted against the normalized eigenvalues ordinal
+numbers as showed in `[1]`.
+
+1.  M. El Khatib, S. Evangelisti, T. Leininger, and G. L. Bendazzoli, Phys. Chem. Chem. Phys., 2012, 14, 15666–76.
+"""
 
 """
 The name of the output is readed from the prompt
