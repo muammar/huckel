@@ -104,10 +104,13 @@ With this, we normalized the X axis for the later plot of the values. Please rea
 M. El Khatib, S. Evangelisti, T. Leininger, and G. L. Bendazzoli, Phys. Chem. Chem. Phys., 2012, 14, 15666–76.
 """
 counter=0
-for i in e_vals:
-    norm=counter+1
-    print norm/float(hshape[0]),i
-    counter += 1
+with open('huckel.dat','w') as hout:
+    for i in e_vals:
+        norm=counter+1
+        norma=norm/float(hshape[0])
+        print norma,i
+        hout.write(str(norma)+ ' ' + ' ' +  str(i) + '\n')
+        counter += 1
 ####print (e_vals)
 ####print (e_vecs)
 
