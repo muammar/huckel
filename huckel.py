@@ -12,7 +12,17 @@ __status__ = "Development"
 """
 import csv
 
+print('')
+print ('Does your molecule have different interatomic distances for the carbon atoms? [Default answer: no]')
+yes = set(['yes','y', 'ye', 'Yes', 'Ye', 'Y'])
+answer=raw_input()
+if answer in yes:
+    print ('Please enter the interval of distances in the format: lower, maximum')
+    intervalo=raw_input().split(",")
+    print ('The entered interval is: ' + str(intervalo))
+
 """
+
 In this part of the code, we take the coordinates of the molecule from the
 MOLPRO output file and then we dump its content in outfile.
 """
@@ -84,8 +94,9 @@ print ('')
 #    print x
 
 #distances[np.isclose(distances, 0)]  = 1
-distances[distances > 2.68530063] = 0
-distances[np.isclose(distances, 2.68530063)]  = -1
+distances[distances > float(intervalo[1])] = 0
+#distances[np.isclose(distances, 2.68530063)]  = -1
+distances[(distances > float(intervalo[0])) * (distances < float(intervalo[1]))] = -1
 
 print distances
 print ('')
