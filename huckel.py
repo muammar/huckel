@@ -20,6 +20,10 @@ if answer in yes:
     print ('Please enter the interval of distances in the format: lower, maximum')
     intervalo=raw_input().split(",")
     print ('The entered interval is: ' + str(intervalo))
+else:
+    print ('Enter the only internuclear value of your molecule:')
+    inter=raw_input()
+    print ('The entered value is: ' + str(inter))
 
 """
 
@@ -61,7 +65,9 @@ with open('coordvout','rb') as source:
     with open('coordbarray','wb') as result:
         wtr= csv.writer(result)
         for r in rdr:
-            wtr.writerow( (r[3], r[4], r[5]) )
+            # Here, we strip out atoms different from C
+            if not r[1].startswith('H'):
+                wtr.writerow( (r[3], r[4], r[5]) )
 
 # Import csv files to matrices in numpy.
 from numpy import genfromtxt
@@ -94,9 +100,12 @@ print ('')
 #    print x
 
 #distances[np.isclose(distances, 0)]  = 1
-distances[distances > float(intervalo[1])] = 0
-#distances[np.isclose(distances, 2.68530063)]  = -1
-distances[(distances > float(intervalo[0])) * (distances < float(intervalo[1]))] = -1
+if answer in yes:
+    distances[distances > float(intervalo[1])] = 0
+    distances[(distances > float(intervalo[0])) * (distances < float(intervalo[1]))] = -1
+else:
+    distances[distances > float(inter)] = 0
+    distances[np.isclose(distances, float(inter))]  = -1
 
 print distances
 print ('')
@@ -122,6 +131,7 @@ with open('huckel.dat','w') as hout:
         print norma,i
         hout.write(str(norma)+ ' ' + ' ' +  str(i) + '\n')
         counter += 1
+
 ####print (e_vals)
 ####print (e_vecs)
 
@@ -133,8 +143,6 @@ with open('huckel.dat','w') as hout:
 In this part, files are cleaned. If you want to let them, then you can comment
 all this section.
 """
-"""
 import os
 # Files related to the coordinates
-os.popen('rm -f coordvout coordv coord coordbarray')
-"""
+os.popen('rm -f coord coordbarray coordv coordvout')
