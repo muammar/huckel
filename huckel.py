@@ -76,7 +76,7 @@ print ('Distances between atoms')
 print ('')
 print distances
 
-print ('Veamos')
+print ('The Huckel Hamiltonian Matrix')
 #for x in np.nditer(distances, flags=['external_loop'], order='F'):
 #    print x
 
@@ -86,14 +86,9 @@ distances[np.isclose(distances, 2.68530063)]  = -1
 
 print distances
 
-print ('argwyere')
 atnearat=np.argwhere((distances > 2.3) & (distances < 2.7))
 print (atnearat)
 #print (np.argwhere((distances > 2.55) & (distances < 2.87)))
-
-"""
-Printing the input file with the rotation of the orbitals
-"""
 
 """
 In this part, files are cleaned. If you want to let them, then you can comment
