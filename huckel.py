@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 __author__ = "Muammar El Khatib"
-__copyright__ = "Copyright 2013, Muammar El Khatib"
+__copyright__ = "Copyright 2014, Muammar El Khatib"
 __credits__ = [""]
 __license__ = "GPL"
 __version__ = "3"
@@ -77,6 +77,8 @@ print ('')
 print distances
 
 print ('The Huckel Hamiltonian Matrix')
+hshape=distances.shape
+print ('Shape of the matrix ' + str(hshape))
 #for x in np.nditer(distances, flags=['external_loop'], order='F'):
 #    print x
 
@@ -86,10 +88,26 @@ distances[np.isclose(distances, 2.68530063)]  = -1
 
 print distances
 
+"""
+Calculation of Eigenvalues and Eigenvectors using scipy
+"""
 from scipy import linalg as LA
 e_vals, e_vecs = LA.eigh(distances)
-print (e_vals)
-print (e_vecs)
+
+
+"""
+A counter is created in the loop, and for each iteration such index is divided
+by the shape of the columns of the Huckecl matrix which is squared (M,N); M=N.
+With this, we normalized the X axis for the later plot of the values. Please read:
+M. El Khatib, S. Evangelisti, T. Leininger, and G. L. Bendazzoli, Phys. Chem. Chem. Phys., 2012, 14, 15666–76.
+"""
+counter=0
+for i in e_vals:
+    norm=counter+1
+    print norm/float(hshape[0]),i
+    counter += 1
+####print (e_vals)
+####print (e_vecs)
 
 #atnearat=np.argwhere((distances > 2.3) & (distances < 2.7))
 #print (atnearat)
