@@ -32,12 +32,13 @@ You need to rename your MOLPRO output file to `input`, and execute the script
 as follows:
 
 ```bash
-$ python $PATH/huckel/huckel.py
+$ python $PATH/huckel/huckel.py $input
 ```
 
-The program will ask you if your molecule has the same internuclear distances,
-and to enter such value. In the case that your carbon structure has different
-values, the program will ask you for the interval of such distances.
+Where `$input` is the name of your MOLPRO output file.  The program will ask
+you if your molecule has the same internuclear distances, and to enter such
+value. In the case that your carbon structure has different values, the program
+will ask you for the interval of such distances.
 
 
 Finally, a `huckel.dat` file will be created at the end of the execution that

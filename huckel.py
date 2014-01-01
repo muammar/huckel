@@ -10,6 +10,14 @@ __maintainer__ = "Muammar El Khatib"
 __email__ = "muammarelkhatib@gmail.com"
 __status__ = "Development"
 """
+
+"""
+The name of the output is readed from the prompt
+"""
+import sys
+len(sys.argv)
+input=str(sys.argv[1])
+
 import csv
 
 print('')
@@ -30,7 +38,7 @@ else:
 In this part of the code, we take the coordinates of the molecule from the
 MOLPRO output file and then we dump its content in outfile.
 """
-with open('input') as infile, open('coord','w') as outfile:
+with open(input) as infile, open('coord','w') as outfile:
     copy = False
     for line in infile:
         if line.strip() == "NR  ATOM    CHARGE       X              Y              Z":
