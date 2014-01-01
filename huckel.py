@@ -86,8 +86,13 @@ distances[np.isclose(distances, 2.68530063)]  = -1
 
 print distances
 
-atnearat=np.argwhere((distances > 2.3) & (distances < 2.7))
-print (atnearat)
+from scipy import linalg as LA
+e_vals, e_vecs = LA.eigh(distances)
+print (e_vals)
+print (e_vecs)
+
+#atnearat=np.argwhere((distances > 2.3) & (distances < 2.7))
+#print (atnearat)
 #print (np.argwhere((distances > 2.55) & (distances < 2.87)))
 
 """
@@ -98,7 +103,4 @@ all this section.
 import os
 # Files related to the coordinates
 os.popen('rm -f coordvout coordv coord coordbarray')
-
-# Files related to the center of charges
-os.popen('rm -f coc cocbarray cocsvout cocsv cocbarrayr cocbarraycoc')
 """
