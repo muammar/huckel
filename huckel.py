@@ -16,7 +16,8 @@ Cartesian coordinates, it forms a Huckel hamiltonian matrix to then give you
 the eigenvalues to be plotted against the normalized eigenvalues ordinal
 numbers as showed in `[1]`.
 
-1.  M. El Khatib, S. Evangelisti, T. Leininger, and G. L. Bendazzoli, Phys. Chem. Chem. Phys., 2012, 14, 15666–76.
+1.  M. El Khatib, S. Evangelisti, T. Leininger, and G. L. Bendazzoli, Phys.
+    Chem. Chem. Phys., 2012, 14, 15666–76.
 """
 
 """
@@ -136,8 +137,7 @@ e_vals, e_vecs = LA.eigh(distances)
 """
 A counter is created in the loop, and for each iteration such index is divided
 by the shape of the columns of the Huckecl matrix which is squared (M,N); M=N.
-With this, we normalized the X axis for the later plot of the values. Please read:
-M. El Khatib, S. Evangelisti, T. Leininger, and G. L. Bendazzoli, Phys. Chem. Chem. Phys., 2012, 14, 15666–76.
+With this, we normalized the X axis for the later plot of the values.
 """
 counter=0
 with open('huckel.dat','w') as hout:
