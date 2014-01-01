@@ -76,9 +76,10 @@ print ('Distances between atoms')
 print ('')
 print distances
 
-print ('The Huckel Hamiltonian Matrix')
+print ('')
 hshape=distances.shape
-print ('Shape of the matrix ' + str(hshape))
+print ('The Huckel Hamiltonian Matrix of shape ' + str(hshape) + ' is printed below:')
+print ('')
 #for x in np.nditer(distances, flags=['external_loop'], order='F'):
 #    print x
 
@@ -87,6 +88,7 @@ distances[distances > 2.68530063] = 0
 distances[np.isclose(distances, 2.68530063)]  = -1
 
 print distances
+print ('')
 
 """
 Calculation of Eigenvalues and Eigenvectors using scipy
