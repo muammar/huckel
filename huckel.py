@@ -27,23 +27,38 @@ import sys
 len(sys.argv)
 input=str(sys.argv[1])
 
+# Comma separated values module is loaded
 import csv
 
-print('')
-print ('Does your molecule have different interatomic distances for the carbon atoms? [Default answer: no]')
+print ('')
+print ('Does your molecule have different inter atomic distances for the carbon atoms? [Default answer: no]')
 yes = set(['yes','y', 'ye', 'Yes', 'Ye', 'Y'])
 answer=raw_input()
 if answer in yes:
     print ('Please enter the interval of distances in the format: lower, maximum')
     intervalo=raw_input().split(",")
-    print ('The entered interval is: ' + str(intervalo))
+    print ('The requested interval is: ' + str(intervalo))
 else:
     print ('Enter the only internuclear value of your molecule:')
     inter=raw_input()
-    print ('The entered value is: ' + str(inter))
+    print ('The requested value is: ' + str(inter))
 
 """
+Atom list to be removed
+"""
+import numpy as np
+atomlist=[]
+print ('Would you like to delete some carbon atoms? [Default answer: no]')
+yesal = set(['yes','y', 'ye', 'Yes', 'Ye', 'Y'])
+answeral=raw_input()
+if answeral in yesal:
+    print ('Please enter the number of the desired atoms to be deleted')
+    atoml=[raw_input().split(",")]
+    print ('The requested atoms to be deleted are: ' + str(atoml))
+    atomln=np.asarray(atoml,dtype=np.int32)
+    atomlist=atomln-1
 
+"""
 In this part of the code, we take the coordinates of the molecule from the
 MOLPRO output file and then we dump its content in outfile.
 """
@@ -95,13 +110,23 @@ print ('Coordinate array')
 print ('')
 print(coordmatrix)
 
+"""
+In this section we erase atoms from atomlist if they were introduced at run time
+"""
+
+coordmatrix=np.delete(coordmatrix, (atomlist), axis=0) #Row
+
+print ('')
+print ('Coordinate after deletion of saturated carbons')
+print ('')
+print(coordmatrix)
+
 
 """
 Now, the distances between two points in the 3D arrays are calculated using
 scipy and cdists.
 """
 import scipy.spatial as sp
-import numpy as np
 distances=sp.distance.cdist(coordmatrix,coordmatrix, 'euclidean')
 
 print ('')
@@ -130,10 +155,22 @@ print ('')
 """
 Calculation of Eigenvalues and Eigenvectors using scipy
 """
+hshape=distances.shape
 from scipy import linalg as LA
 e_vals, e_vecs = LA.eigh(distances)
 
+idx = e_vals.argsort()
+idxv = e_vecs.argsort()
 
+print ('indices')
+print (idx)
+print (idxv)
+print ('evals')
+print (e_vals[idx])
+print ('')
+print ('evecs')
+print (e_vecs[:,idx])
+print ('')
 """
 A counter is created in the loop, and for each iteration such index is divided
 by the shape of the columns of the Huckecl matrix which is squared (M,N); M=N.
@@ -148,12 +185,6 @@ with open('huckel.dat','w') as hout:
         hout.write(str(norma)+ ' ' + ' ' +  str(i) + '\n')
         counter += 1
 
-####print (e_vals)
-####print (e_vecs)
-
-#atnearat=np.argwhere((distances > 2.3) & (distances < 2.7))
-#print (atnearat)
-#print (np.argwhere((distances > 2.55) & (distances < 2.87)))
 
 """
 In this part, files are cleaned. If you want to let them, then you can comment
