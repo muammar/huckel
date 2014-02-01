@@ -29,6 +29,7 @@ input=str(sys.argv[1])
 
 # Comma separated values module is loaded
 import csv
+import numpy as np
 
 print ('')
 print ('Does your molecule have different inter atomic distances for the carbon atoms? [Default answer: no]')
@@ -46,7 +47,6 @@ else:
 """
 Atom list to be removed
 """
-import numpy as np
 atomlist=[]
 print ('Would you like to delete some carbon atoms? [Default answer: no]')
 yesal = set(['yes','y', 'ye', 'Yes', 'Ye', 'Y'])
