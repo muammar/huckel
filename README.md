@@ -23,7 +23,8 @@ of atoms, that is usually impossible at the ab initio level`[1]`.
 This is a python program that takes your MOLPRO output file, and from the
 Cartesian coordinates, it forms a Huckel hamiltonian matrix to then give you
 the eigenvalues to be plotted against the normalized eigenvalues ordinal
-numbers as showed in `[1]`.
+numbers as showed in `[1]`. It is also possible to delete desired Carbon atoms
+by indicanting their respective numbers in the structure.
 
 I'll be working in a generalization of the problem treated. More information
 soon.
